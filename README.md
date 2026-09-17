@@ -5,10 +5,11 @@ dashboard clicks, no 30-60 minute run caps, no credit decay. One command
 turns a text prompt into a `.webm`.
 
 ```
-pip install -e .
-mad provision              # one-time, idempotent — safe to re-run
-mad run --prompt "a drone shot rising over a foggy alpine lake at sunrise"
+uvx --from "git+https://github.com/kremenmobtans-oss/mad-cli.git" mad provision
+uvx --from "git+https://github.com/kremenmobtans-oss/mad-cli.git" mad run --prompt "a drone shot rising over a foggy alpine lake at sunrise"
 ```
+
+(no [uv](https://docs.astral.sh/uv/)? `pipx install git+https://github.com/kremenmobtans-oss/mad-cli.git` or plain `pip install git+https://github.com/kremenmobtans-oss/mad-cli.git` both work the same way.)
 
 ## Why this exists
 
@@ -48,9 +49,14 @@ at any time.
    ```
    export RUNPOD_API_KEY=your-key-here
    ```
-3. Install and run:
+3. Install and run — no separate install step needed with `uvx`:
    ```
-   pip install -e .
+   uvx --from "git+https://github.com/kremenmobtans-oss/mad-cli.git" mad provision
+   uvx --from "git+https://github.com/kremenmobtans-oss/mad-cli.git" mad run --prompt "..."
+   ```
+   or install it once with `pipx`/`pip` and just call `mad` from then on:
+   ```
+   pipx install git+https://github.com/kremenmobtans-oss/mad-cli.git
    mad provision
    mad run --prompt "..."
    ```
